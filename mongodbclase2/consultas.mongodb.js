@@ -135,6 +135,11 @@ db.alquiler.aggregate([
 use("db_alquiler_campus");
 db.reserva.aggregate([
   {
+    $match: {
+      estado: "Pendiente"
+    }
+  },
+  {
     $lookup: {
       from: "automovil",
       localField: "id_automovil",

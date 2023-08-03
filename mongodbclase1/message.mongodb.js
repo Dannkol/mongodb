@@ -144,7 +144,7 @@ db.alquiler.insertMany(
     {
         fecha_inicio: ISODate("2023-08-01T12:30:00"),
         fecha_fin: ISODate("2023-08-10T12:30:00"),
-        costo_total: tiempoAlquiler / (1000 * 60 * 60 * 24) * idAutomovil_Marca2.precio_diario,
+        costo_total: (new Date("2023-08-01T12:30:00") - new Date("2023-08-10T12:30:00")) / (1000 * 60 * 60 * 24) * idAutomovil_Marca2.precio_diario,
         estado: "Alquilado",
         id_cliente: idCliente3,
         id_automovil: idAutomovil_Marca2._id
