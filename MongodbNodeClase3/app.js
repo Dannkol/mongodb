@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import express from "express";
+import dotenv from "dotenv";
 
 //Modulos propios
 import configureApp from "./src/config/express.js";
