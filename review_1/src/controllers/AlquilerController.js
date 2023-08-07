@@ -12,7 +12,7 @@ const GetAllAlquilerActivo =  async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los Alquileres Activos"
         });
-        throw new Error;
+
     }
 }
 
@@ -26,7 +26,7 @@ const GetAlquilerId = async (req, res) =>{
         res.status(404).json({
             message : "Error Al traer los Alquileres Activos"
         });
-        throw new Error;
+
     }
 }
 

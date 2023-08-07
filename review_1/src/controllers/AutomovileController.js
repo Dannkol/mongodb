@@ -12,7 +12,7 @@ const GetAllAutoDisp =  async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los Autos disponibles"
         });
-        throw new Error;
+
     }
 }
 
@@ -28,7 +28,7 @@ const GetSucursalCantidad = async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los Autos disponibles"
         });
-        throw new Error;
+
     }
 }
 

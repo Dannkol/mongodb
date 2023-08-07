@@ -42,7 +42,7 @@ const GetClienteDni =  async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los clientes"
         });
-        throw Error;
+
     }
 }
 
