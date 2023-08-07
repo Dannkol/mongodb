@@ -6,7 +6,7 @@ import express from "express";
 
 // Controllers
 
-import { GetAllClients, GetReservaPendientesCliente } from "../controllers/ClientesControllers.js";
+import { GetAllClients, GetReservaPendientesCliente, GetClienteDni} from "../controllers/ClientesControllers.js";
 import { GetAllAutoDisp , GetSucursalCantidad } from "../controllers/AutomovileController.js";
 import { GetAllAlquilerActivo, GetAlquilerId, GetAlquilerPay} from "../controllers/AlquilerController.js";
 import { GetEmpleadoVendedor } from "../controllers/EmpleadoController.js";
@@ -24,6 +24,7 @@ router.get(
   }
 );
 
+router.get('/clients/:dni' , GetClienteDni);
 router.get('/clients' , GetAllClients);
 router.get('/clients/reservas/pendientes',  GetReservaPendientesCliente)
 

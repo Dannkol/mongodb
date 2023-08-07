@@ -40,7 +40,7 @@ const GetAlquilerPay = async (req, res) =>{
         res.status(404).json({
             message : "Error Al traer los Alquileres Activos"
         });
-        throw new Error;
+        
     }
 }
 

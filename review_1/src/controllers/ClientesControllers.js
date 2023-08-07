@@ -1,4 +1,4 @@
-import { GetAll, GetReservaPendientes } from "../models/Clientes.js";
+import { GetAll, GetReservaPendientes, GetDNI } from "../models/Clientes.js";
 
 const GetAllClients =  async (req, res) => {
     try {
@@ -12,7 +12,6 @@ const GetAllClients =  async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los clientes"
         });
-        throw new Error;
     }
 }
 
@@ -28,8 +27,23 @@ const GetReservaPendientesCliente =  async (req, res) => {
         res.status(404).json({
             message : "Error Al traer los clientes"
         });
-        throw new Error;
     }
 }
 
-export { GetAllClients , GetReservaPendientesCliente }
+const GetClienteDni =  async (req, res) => {
+    try {
+        
+        const result = await GetDNI(req.params.dni);
+
+        res.status(200).json(result);
+
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            message : "Error Al traer los clientes"
+        });
+        throw Error;
+    }
+}
+
+export { GetAllClients , GetReservaPendientesCliente , GetClienteDni }
