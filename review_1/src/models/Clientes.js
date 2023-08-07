@@ -329,4 +329,66 @@ const GetClientesAlquiler = async () => {
   }
 }
 
-export { GetAll, GetReservaPendientes, GetDNI, getClientResvas , GetClientesAlquiler };
+const GetDataClienteReserva = async () => {
+  const client = await mongoConn();
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("alquiler");
+    const query = [
+      {
+        $lookup: {
+          from: "cliente",
+          localField: "id_cliente",
+          foreignField: "_id", 
+          as: "cliente"
+        }
+      },
+      {
+        $unwind: "$cliente"
+      },
+      {
+        $project: {
+          _id: 0,
+          "cliente_nombre": { $concat : ["$cliente.nombre", " " ,"$cliente.apellido"] },
+          "id_cliente": { $toString : "$cliente._id"},
+          "email": "$cliente.email",
+          "dni" : "$cliente.dni",
+          "telefone": "$cliente.telefono",
+          "direccion": "$cliente.direccion"
+        }
+      },
+      {
+        $group: {
+          _id: "$id_cliente",
+          cliente_nombre: { $first: "$cliente_nombre" },
+          datos : {
+            $push:{
+              "email" : "$email",
+              "dni" : "$dni",
+              "telefone" : "$telefone",
+              "direccion" : "$direccion"
+            }
+          }
+        }
+      },
+      {
+        $project: {
+          "_id": 0,
+          "id_cliente": "$_id",
+          "cliente_nombre": 1,
+          "datos": 1
+        }
+      }
+    ];
+
+    return await collection.aggregate(query).toArray();
+
+  } catch (error) {
+    console.log(error);
+    return "error";
+  }finally{
+    client.close();
+  }
+}
+
+export { GetAll, GetReservaPendientes, GetDNI, getClientResvas , GetClientesAlquiler , GetDataClienteReserva };

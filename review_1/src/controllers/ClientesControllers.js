@@ -1,4 +1,4 @@
-import { GetAll, GetReservaPendientes, GetDNI , getClientResvas , GetClientesAlquiler } from "../models/Clientes.js";
+import { GetAll, GetReservaPendientes, GetDNI , getClientResvas , GetClientesAlquiler , GetDataClienteReserva } from "../models/Clientes.js";
 
 const GetAllClients =  async (req, res) => {
     try {
@@ -79,4 +79,21 @@ const GetAllClientsAlquiler =  async (req, res) => {
     }
 }
 
-export { GetAllClients , GetReservaPendientesCliente , GetClienteDni , GetClienteRservasId , GetAllClientsAlquiler }
+const GetAllInfoReserva =  async (req, res) => {
+    try {
+        console.log('holsa');
+        
+        const result = await GetDataClienteReserva();
+
+        res.status(200).json(result);
+
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            message : "Error Al traer los clientes"
+        });
+
+    }
+}
+
+export { GetAllClients , GetReservaPendientesCliente , GetClienteDni , GetClienteRservasId , GetAllClientsAlquiler , GetAllInfoReserva }
