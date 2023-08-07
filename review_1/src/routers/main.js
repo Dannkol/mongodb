@@ -8,7 +8,8 @@ import {
   GetAllClients,
   GetReservaPendientesCliente,
   GetClienteDni,
-  GetClienteRservasId
+  GetClienteRservasId,
+  GetAllClientsAlquiler,
 } from "../controllers/ClientesControllers.js";
 import {
   GetAllAutoDisp,
@@ -21,7 +22,10 @@ import {
   GetAlquilerPay,
   GetAlquilerFechaInicial,
 } from "../controllers/AlquilerController.js";
-import { GetEmpleadoVendedor , GetEmpleadoGerenteAssistente } from "../controllers/EmpleadoController.js";
+import {
+  GetEmpleadoVendedor,
+  GetEmpleadoGerenteAssistente,
+} from "../controllers/EmpleadoController.js";
 
 // Rutas
 
@@ -33,11 +37,11 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/clients/:dni", GetClienteDni);
 router.get("/clients", GetAllClients);
 router.get("/clients/reservas/pendientes", GetReservaPendientesCliente);
 router.get("/clients/reservas/:id", GetClienteRservasId);
-
+router.get("/clients/alquiler", GetAllClientsAlquiler);
+router.get("/clients/:dni", GetClienteDni);
 
 router.get("/auto/disponible", GetAllAutoDisp);
 router.get("/auto/sursales", GetSucursalCantidad);
