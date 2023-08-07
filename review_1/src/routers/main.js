@@ -7,7 +7,7 @@ import express from "express";
 // Controllers
 
 import { GetAllClients, GetReservaPendientesCliente, GetClienteDni} from "../controllers/ClientesControllers.js";
-import { GetAllAutoDisp , GetSucursalCantidad } from "../controllers/AutomovileController.js";
+import { GetAllAutoDisp , GetSucursalCantidad, GetAllCapacidad5 } from "../controllers/AutomovileController.js";
 import { GetAllAlquilerActivo, GetAlquilerId, GetAlquilerPay} from "../controllers/AlquilerController.js";
 import { GetEmpleadoVendedor } from "../controllers/EmpleadoController.js";
 
@@ -30,6 +30,7 @@ router.get('/clients/reservas/pendientes',  GetReservaPendientesCliente)
 
 router.get('/auto/disponible', GetAllAutoDisp);
 router.get('/auto/sursales', GetSucursalCantidad);
+router.get('/auto/capacidad/5', GetAllCapacidad5);
 
 
 router.get('/alquiler/activo', GetAllAlquilerActivo);
