@@ -1,3 +1,4 @@
+import { Long } from "mongodb";
 import { mongoConn, getDB } from "../config/mongodb.js";
 
 const GetAllDisp = async () => {
@@ -201,4 +202,49 @@ const GetAllCanSucursal = async () => {
   }
 }
 
-export { GetAllDisp, GetCantidad, GetAllCap5 , GetMarca , GetAllCanSucursal };
+const GetCapDisp = async () => {
+  const client = await mongoConn();
+
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("alquiler");
+    const query = [
+      {
+        $lookup: {
+          from: "automovil",
+          localField: "id_automovil",
+          foreignField: "_id",
+          as: "automovil"
+        }
+      },
+      {
+        $unwind: "$automovil"
+      },
+      {
+        $match: {
+          "automovil.capacidad": 5,
+          "estado": "Disponible"
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          "id_automovil": { $toString : "$automovil._id"},
+          "marca": "$automovil.marca",
+          "modelo": "$automovil.modelo",
+          "capacidad": "$automovil.capacidad"
+        }
+      }
+    ];
+
+    return await collection.aggregate(query).toArray();
+    
+  } catch (error) {
+    console.log(error);
+    return "error";
+  }finally{
+    client.close();
+  }
+}
+
+export { GetAllDisp, GetCantidad, GetAllCap5 , GetMarca , GetAllCanSucursal , GetCapDisp };
