@@ -4,7 +4,6 @@ const GetAll = async () => {
     const client = await mongoConn()
   try {
     const db = getDB("db_alquiler_campus");
-    console.log(db);
     const collection = db.collection("cliente");
     return await collection.find({}).toArray();
   } catch (error) {

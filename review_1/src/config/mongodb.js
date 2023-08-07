@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 
 dotenv.config();
 
-const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@pruebas.ncnxgtj.mongodb.net/${process.env.ATLAS_DATABASE}`;
+const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@pruebas.ncnxgtj.mongodb.net`;
 
 
 let client = null;
