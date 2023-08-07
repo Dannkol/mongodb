@@ -44,4 +44,44 @@ const GetAllDisp = async () => {
   }
 };
 
-export { GetAllDisp };
+const GetCantidad = async () => {
+  const client = await mongoConn();
+
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("sucursal_automovil");
+    const query = [
+      {
+        $group: {
+          _id: "$id_sucursal",
+          automovil: {
+            $push: "$$ROOT"
+          }
+        }
+      },
+      {
+        $addFields: {
+          cantidad_total: {
+            $sum : "$automovil.cantidad_disponible"
+          }
+        }
+      },
+      {
+        $project: {
+          "_id": 0,
+          "id_sucursal": { $toString : "$_id" },
+          "cantidad_total": 1
+        }
+      }
+    ];
+    return await collection.aggregate(query).toArray();
+  }
+  catch (err) {
+    console.log(error);
+    return "error";
+  }finally{
+    client.close();
+  }
+}
+
+export { GetAllDisp, GetCantidad };
