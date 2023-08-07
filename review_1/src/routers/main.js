@@ -6,7 +6,7 @@ import express from "express";
 
 // Controllers
 
-import { GetAllClients } from "../controllers/ClientesControllers.js";
+import { GetAllClients, GetReservaPendientesCliente } from "../controllers/ClientesControllers.js";
 import { GetAllAutoDisp } from "../controllers/AutomovileController.js";
 import { GetAllAlquilerActivo } from "../controllers/AlquilerController.js";
 
@@ -24,6 +24,8 @@ router.get(
 );
 
 router.get('/clients' , GetAllClients);
+router.get('/clients/reservas/pendientes',  GetReservaPendientesCliente)
+
 router.get('/auto/disponible', GetAllAutoDisp);
 router.get('/alquiler/activo', GetAllAlquilerActivo);
 
