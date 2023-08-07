@@ -231,7 +231,7 @@ db.reserva.aggregate([
 
 // 5. Obtener los detalles del alquiler con el ID_Alquilerespecífico.
 
-const id_alquilers = "64c98be1448cbd25fbcb3391"
+const id_alquilers = "64ca40b22a41a46b22d3aba0"
 
 use("db_alquiler_campus");
 db.alquiler.aggregate([
