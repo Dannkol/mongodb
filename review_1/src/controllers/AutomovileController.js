@@ -10,7 +10,7 @@ const GetAllAutoDisp =  async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            message : "Error Al traer los clientes"
+            message : "Error Al traer los Autos disponibles"
         });
         throw new Error;
     }

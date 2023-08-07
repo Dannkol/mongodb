@@ -8,6 +8,7 @@ import express from "express";
 
 import { GetAllClients } from "../controllers/ClientesControllers.js";
 import { GetAllAutoDisp } from "../controllers/AutomovileController.js";
+import { GetAllAlquilerActivo } from "../controllers/AlquilerController.js";
 
 
 // Rutas
@@ -24,5 +25,7 @@ router.get(
 
 router.get('/clients' , GetAllClients);
 router.get('/auto/disponible', GetAllAutoDisp);
+router.get('/alquiler/activo', GetAllAlquilerActivo);
+
 
 export default router;

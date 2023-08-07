@@ -35,7 +35,6 @@ const GetAllDisp = async () => {
         },
       },
     ];
-    console.log( await collection.aggregate(query));
     return await collection.aggregate(query).toArray();
   } catch (error) {
     console.log(error);
