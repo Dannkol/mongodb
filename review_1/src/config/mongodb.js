@@ -3,16 +3,18 @@ import { MongoClient } from "mongodb";
 
 dotenv.config();
 
-// Variables de entorno
+const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@pruebas.ncnxgtj.mongodb.net/${process.env.ATLAS_DATABASE}`;
+
+
+let client = null;
 
 const mongoConn = async () => {
   try {
-    const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@pruebas.ncnxgtj.mongodb.net/${process.env.ATLAS_DATABASE}`;
     const options = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
-    const client = await MongoClient.connect(uri, options);
+    client = await MongoClient.connect(uri, options);
     return client;
   } catch (error) {
     console.log(error);
@@ -20,4 +22,8 @@ const mongoConn = async () => {
   }
 };
 
-export { mongoConn };
+const getDB = (dbname) => {
+  return client?.db(dbname);
+}
+
+export { mongoConn , getDB };
