@@ -362,7 +362,7 @@ db.sucursal_automovil.aggregate([
 
 // 8. Obtener el costo total de un alquiler específico.
 
-id_alquilers = "64c98be1448cbd25fbcb3391";
+id_alquilers = "64ca40b22a41a46b22d3aba0";
 
 use("db_alquiler_campus");
 

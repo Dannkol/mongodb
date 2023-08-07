@@ -194,4 +194,27 @@ const GetId = async (id_alquilers) => {
   }
 };
 
-export { GetAllActivo, GetId };
+const pay = async (id_alquiler) => {
+  const client = await mongoConn();
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("alquiler");
+    return await collection.findOne(
+      { _id: { $eq: new ObjectId(id_alquiler) } },
+      {
+        projection: {
+          _id: 0,
+          automovil_id: { $toString: "$id_automovil" },
+          costo_total: 1,
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return "error";
+  } finally {
+    client.close();
+  }
+};
+
+export { GetAllActivo, GetId, pay };

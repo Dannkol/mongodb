@@ -76,7 +76,7 @@ const GetCantidad = async () => {
     ];
     return await collection.aggregate(query).toArray();
   }
-  catch (err) {
+  catch (error) {
     console.log(error);
     return "error";
   }finally{

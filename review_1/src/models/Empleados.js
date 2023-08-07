@@ -9,15 +9,17 @@ const GetVendedor = async () => {
       .find(
         { cargo: { $eq: "Vendedor" } },
         {
-          _id: 0,
-          id_vendedor: "$_id",
-          nombre_completo: {
-            $concat: ["$nombre", " ", "$apellido"],
+          projection: {
+            _id: 0,
+            id_vendedor: "$_id",
+            nombre_completo: {
+              $concat: ["$nombre", " ", "$apellido"],
+            },
+            cargo: 1,
+            direccion: 1,
+            telefono: 1,
+            dni: 1,
           },
-          cargo: 1,
-          direccion: 1,
-          telefono: 1,
-          dni: 1,
         }
       )
       .toArray();
@@ -29,4 +31,4 @@ const GetVendedor = async () => {
   }
 };
 
-export { GetVendedor }
+export { GetVendedor };
