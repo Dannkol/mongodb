@@ -21,7 +21,7 @@ import {
   GetAlquilerPay,
   GetAlquilerFechaInicial,
 } from "../controllers/AlquilerController.js";
-import { GetEmpleadoVendedor } from "../controllers/EmpleadoController.js";
+import { GetEmpleadoVendedor , GetEmpleadoGerenteAssistente } from "../controllers/EmpleadoController.js";
 
 // Rutas
 
@@ -49,5 +49,6 @@ router.get("/alquiler/pay/:id", GetAlquilerPay);
 router.get("/alquiler/fecha_inicio/:date", GetAlquilerFechaInicial);
 
 router.get("/vendedores", GetEmpleadoVendedor);
+router.get("/empleado/gerente/asistente", GetEmpleadoGerenteAssistente);
 
 export default router;
