@@ -15,7 +15,8 @@ import {
   GetAllAutoDisp,
   GetSucursalCantidad,
   GetAllCapacidad5,
-  GetObderbyMarca
+  GetObderbyMarca,
+  GetAllCantidadSucursal
 } from "../controllers/AutomovileController.js";
 import {
   GetAllAlquilerActivo,
@@ -46,6 +47,8 @@ router.get("/clients/:dni", GetClienteDni);
 
 router.get("/auto/disponible", GetAllAutoDisp);
 router.get("/auto/sursales", GetSucursalCantidad);
+router.get("/auto/sursales/capacidad", GetAllCantidadSucursal);
+
 router.get("/auto/capacidad/5", GetAllCapacidad5);
 router.get("/auto/marca", GetObderbyMarca);
 

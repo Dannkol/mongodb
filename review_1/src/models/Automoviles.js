@@ -142,4 +142,63 @@ const GetMarca = async () => {
   }
 };
 
-export { GetAllDisp, GetCantidad, GetAllCap5 , GetMarca };
+const GetAllCanSucursal = async () => {
+  const client = await mongoConn();
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("sucursal_automovil");
+
+    const query = [
+      {
+        $lookup : {
+          from: "sucursal",
+          localField: "id_sucursal",
+          foreignField: "_id", 
+          as: "sucursal"
+        }
+      },
+      {
+        $unwind: "$sucursal"
+      },
+      {
+        $project: {
+          _id: 0,
+          "id_sucursal": "_id",
+          "direccion": "$sucursal.direccion",
+          "cantidad_disponible": "$cantidad_disponible"
+        }
+      },
+      {
+        $group: {
+          _id: "$direccion",
+          sucursal: {
+            $push: {
+              "cantidad_disponible": "$cantidad_disponible"
+            }
+          },
+          direccion: { $first : "$direccion" }
+        }
+      },
+      {
+        $project: {
+          "_id": 0,
+          "cantidad_total": {
+            $sum : "$sucursal.cantidad_disponible"
+          },
+          "direccion": 1
+        }
+      }
+    ];
+
+    return await collection.aggregate(query).toArray();
+
+
+  } catch (error) {
+    console.log(error);
+    return "error";
+  }finally{
+    client.close();
+  }
+}
+
+export { GetAllDisp, GetCantidad, GetAllCap5 , GetMarca , GetAllCanSucursal };
