@@ -1,4 +1,4 @@
-import { GetAllActivo , GetId, pay , GetAlquilerFecha , GetCantidad } from "../models/Alquiler.js";
+import { GetAllActivo , GetId, pay , GetAlquilerFecha , GetCantidad , GetAlquilerFechaInicioFinal} from "../models/Alquiler.js";
 
 const GetAllAlquilerActivo =  async (req, res) => {
     try {
@@ -72,4 +72,18 @@ const GetAllCantidadAlquiler = async (req, res) => {
     }
 }
 
-export { GetAllAlquilerActivo , GetAlquilerId , GetAlquilerPay , GetAlquilerFechaInicial , GetAllCantidadAlquiler };
+const GetAllFechas = async (req, res) => { 
+    try {
+        const result = await GetAlquilerFechaInicioFinal(req.params.inicio , req.params.final);
+
+        res.status(200).json(result);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            message : "Error Al traer los Alquileres Activos"
+        });
+        
+    }
+}
+
+export { GetAllAlquilerActivo , GetAlquilerId , GetAlquilerPay , GetAlquilerFechaInicial , GetAllCantidadAlquiler , GetAllFechas };

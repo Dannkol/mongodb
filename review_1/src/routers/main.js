@@ -10,6 +10,7 @@ import {
   GetClienteDni,
   GetClienteRservasId,
   GetAllClientsAlquiler,
+  GetAllInfoReserva,
 } from "../controllers/ClientesControllers.js";
 import {
   GetAllAutoDisp,
@@ -17,14 +18,15 @@ import {
   GetAllCapacidad5,
   GetObderbyMarca,
   GetAllCantidadSucursal,
-  GetCapacidadDisponible
+  GetCapacidadDisponible,
 } from "../controllers/AutomovileController.js";
 import {
   GetAllAlquilerActivo,
   GetAlquilerId,
   GetAlquilerPay,
   GetAlquilerFechaInicial,
-  GetAllCantidadAlquiler
+  GetAllCantidadAlquiler,
+  GetAllFechas
 } from "../controllers/AlquilerController.js";
 import {
   GetEmpleadoVendedor,
@@ -41,6 +43,7 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/clients/reserva/info", GetAllInfoReserva);
 router.get("/clients", GetAllClients);
 router.get("/clients/reservas/pendientes", GetReservaPendientesCliente);
 router.get("/clients/reservas/:id", GetClienteRservasId);
@@ -52,15 +55,16 @@ router.get("/auto/sursales", GetSucursalCantidad);
 router.get("/auto/sursales/capacidad", GetAllCantidadSucursal);
 router.get("/auto/sursales/capacidad/disponible", GetCapacidadDisponible);
 
-
 router.get("/auto/capacidad/5", GetAllCapacidad5);
 router.get("/auto/marca", GetObderbyMarca);
 
-router.get("/alquiler/cantidad", GetAllCantidadAlquiler)
+router.get("/alquiler/cantidad", GetAllCantidadAlquiler);
 router.get("/alquiler/activo", GetAllAlquilerActivo);
 router.get("/alquiler/:id", GetAlquilerId);
 router.get("/alquiler/pay/:id", GetAlquilerPay);
 router.get("/alquiler/fecha_inicio/:date", GetAlquilerFechaInicial);
+router.get("/alquiler/fecha_inicio/:inicio/fecha_final/:final", GetAllFechas);
+
 
 router.get("/vendedores", GetEmpleadoVendedor);
 router.get("/empleado/gerente/asistente", GetEmpleadoGerenteAssistente);
