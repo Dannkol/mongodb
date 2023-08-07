@@ -1,0 +1,26 @@
+{
+  "name": "review_1",
+  "version": "1.0.0",
+  "description": "Realizar los endpoints de las consultas de la clase 2, realizar los esquemas y JWT para las autenticaciones",
+  "main": "app.js",
+  "type": "module",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "3.0.1"
+  },
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "express-rate-limit": "6.9.0",
+    "mongodb": "5.7.0"
+  }
+}
