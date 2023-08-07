@@ -9,6 +9,7 @@ import express from "express";
 import { GetAllClients, GetReservaPendientesCliente } from "../controllers/ClientesControllers.js";
 import { GetAllAutoDisp } from "../controllers/AutomovileController.js";
 import { GetAllAlquilerActivo, GetAlquilerId } from "../controllers/AlquilerController.js";
+import { GetEmpleadoVendedor } from "../controllers/EmpleadoController.js";
 
 
 // Rutas
@@ -32,5 +33,6 @@ router.get('/auto/disponible', GetAllAutoDisp);
 router.get('/alquiler/activo', GetAllAlquilerActivo);
 router.get('/alquiler/:id', GetAlquilerId);
 
+router.get('/vendedores', GetEmpleadoVendedor);
 
 export default router;
