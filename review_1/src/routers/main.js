@@ -4,6 +4,10 @@ import express from "express";
 // Middleware
 
 
+// Controllers
+
+import { GetAllClients } from "../controllers/ClientesControllers.js";
+
 
 // Rutas
 
@@ -16,5 +20,7 @@ router.get(
     })
   }
 );
+
+router.get('/clients' , GetAllClients)
 
 export default router;

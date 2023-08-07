@@ -51,3 +51,76 @@ mongodb permite realizar multitud de consultas anteriormente usamos `findOne`, e
 20. Listar los alquileres con fecha de inicio entre '2023-07-05' y '2023-07-10'.
 
 
+## Run Locally
+
+Clona el repositorio
+
+```bash
+  git clone https://github.com/Dannkol/mongodb.git
+```
+
+ve al directorio
+
+```bash
+  cd mongodb/review_1
+```
+
+Instala las dependencias
+
+```bash
+  npm install
+```
+
+Inicializa el servidor de desarrollo
+
+```bash
+  npm run dev
+```
+# Crear Base de datos
+
+crea la base de datos con el archivo db.mongodb.js en la ruta db/db.mongodb.js
+
+#### NOTA: NO OLVIDES CAMBIAR LAS VARIABLES DE ENTORNO A TUS NECESIDADES
+
+### Clients getall
+
+```http
+POST /api/clients
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Opcional**. |
+
+Respuesta
+
+```json
+[
+  {
+    "_id": "64ca40b12a41a46b22d3ab9c",
+    "nombre": "Nubia",
+    "apellido": "casanova",
+    "dni": 3754892,
+    "direccion": "el carmen",
+    "telefono": 310648975,
+    "email": "nubiacasanova@gmail.com"
+  },
+  {
+    "_id": "64ca40b12a41a46b22d3ab9d",
+    "nombre": "Marta",
+    "apellido": "Martinez",
+    "dni": 5788518885,
+    "direccion": "giron casa",
+    "telefono": 34875698956,
+    "email": "martatazzz77@gmail.com"
+  },
+  {
+    "_id": "64ca40b12a41a46b22d3ab9e",
+    "nombre": "Luz",
+    "apellido": "Federiza",
+    "dni": 877487547,
+    "direccion": "giron cas3",
+    "telefono": 578758857,
+    "email": "Ferrluz23@gmail.com"
+  }
+]
+```
