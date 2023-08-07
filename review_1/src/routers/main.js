@@ -23,6 +23,7 @@ import {
   GetAlquilerId,
   GetAlquilerPay,
   GetAlquilerFechaInicial,
+  GetAllCantidadAlquiler
 } from "../controllers/AlquilerController.js";
 import {
   GetEmpleadoVendedor,
@@ -52,6 +53,7 @@ router.get("/auto/sursales/capacidad", GetAllCantidadSucursal);
 router.get("/auto/capacidad/5", GetAllCapacidad5);
 router.get("/auto/marca", GetObderbyMarca);
 
+router.get("/alquiler/cantidad", GetAllCantidadAlquiler)
 router.get("/alquiler/activo", GetAllAlquilerActivo);
 router.get("/alquiler/:id", GetAlquilerId);
 router.get("/alquiler/pay/:id", GetAlquilerPay);

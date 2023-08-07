@@ -314,4 +314,34 @@ const GetAlquilerFecha = async (fecha) => {
   }
 };
 
-export { GetAllActivo, GetId, pay , GetAlquilerFecha };
+const GetCantidad = async () => {
+  const client = await mongoConn();
+  try {
+    const db = getDB("db_alquiler_campus");
+    const collection = db.collection("alquiler");
+    const query = [
+      {
+        $group: {
+          _id: null,
+          total_alquiler: { $sum: 1 }
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          total_alquiler: 1
+        }
+      }
+    ];
+
+    return await collection.aggregate(query).toArray();
+
+  } catch (error) {
+    console.log(error);
+    return "error";
+  }finally{
+    client.close();
+  }
+}
+
+export { GetAllActivo, GetId, pay , GetAlquilerFecha , GetCantidad };
