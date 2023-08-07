@@ -483,7 +483,7 @@ db.alquiler.aggregate([
 
 // 12. Listar las reservas pendientes realizadas por un cliente específico
 
-id_clientes = "64c98bdf448cbd25fbcb338da";
+id_clientes = "64ca40b12a41a46b22d3ab9c";
 
 use("db_alquiler_campus");
 db.reserva.aggregate([

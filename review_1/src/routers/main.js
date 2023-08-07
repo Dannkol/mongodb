@@ -8,6 +8,7 @@ import {
   GetAllClients,
   GetReservaPendientesCliente,
   GetClienteDni,
+  GetClienteRservasId
 } from "../controllers/ClientesControllers.js";
 import {
   GetAllAutoDisp,
@@ -35,6 +36,8 @@ router.get("/", (req, res) => {
 router.get("/clients/:dni", GetClienteDni);
 router.get("/clients", GetAllClients);
 router.get("/clients/reservas/pendientes", GetReservaPendientesCliente);
+router.get("/clients/reservas/:id", GetClienteRservasId);
+
 
 router.get("/auto/disponible", GetAllAutoDisp);
 router.get("/auto/sursales", GetSucursalCantidad);
