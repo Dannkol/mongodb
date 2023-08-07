@@ -1,4 +1,4 @@
-import { GetAllDisp , GetCantidad, GetAllCap5 } from "../models/automoviles.js";
+import { GetAllDisp , GetCantidad, GetAllCap5 , GetMarca } from "../models/automoviles.js";
 
 const GetAllAutoDisp =  async (req, res) => {
     try {
@@ -48,4 +48,20 @@ const GetAllCapacidad5 = async (req, res) => {
     }
 };
 
-export { GetAllAutoDisp , GetSucursalCantidad, GetAllCapacidad5 };
+const GetObderbyMarca = async (req, res) => {
+    try {
+        
+        const result = await GetMarca();
+
+        res.status(200).json(result);
+
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            message : "Error Al traer los Autos disponibles"
+        });
+
+    }
+};
+
+export { GetAllAutoDisp , GetSucursalCantidad, GetAllCapacidad5 , GetObderbyMarca };
