@@ -4,6 +4,7 @@ db.createCollection("sucursal" , {
   validator : {
     $jsonSchema : {
       bsonType : "object",
+      additionalProperties : false,
       title : "sucursal object validation",
       required : ["nombre","direccion","telefono"],
       properties : {
@@ -28,6 +29,7 @@ db.createCollection("automovil", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "automovil object validation",
       required: ["marca", "modelo", "anio", "tipo", "capacidad", "precio_diario"],
       properties: {
@@ -64,6 +66,7 @@ db.createCollection("sucursal_automovil", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "sucursal_automovil object validation",
       required: ["id_sucursal", "id_automovil", "cantidad_disponible"],
       properties: {
@@ -87,6 +90,7 @@ db.createCollection("empleado", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "empleado object validation",
       required: ["nombre", "apellido", "dni", "direccion", "telefono", "cargo"],
       properties: {
@@ -123,6 +127,7 @@ db.createCollection("cliente", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "cliente object validation",
       required: ["nombre", "apellido", "dni", "direccion", "telefono", "email"],
       properties: {
@@ -160,6 +165,7 @@ db.createCollection("reserva", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "reserva object validation",
       required: ["fecha_reserva", "fecha_inicio", "fecha_fin", "estado", "id_cliente", "id_automovil"],
       properties: {
@@ -196,6 +202,7 @@ db.createCollection("alquiler", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "alquiler object validation",
       required: ["fecha_inicio", "fecha_fin", "costo_total", "estado", "id_cliente", "id_automovil"],
       properties: {
@@ -231,6 +238,7 @@ db.createCollection("registro_devolucion", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "registro_devolucion object validation",
       required: ["fecha_devolucion", "combustible_devuleto", "kilometraje_devuelto", "monto_adicional", "id_alquiler", "id_empleado"],
       properties: {
@@ -269,6 +277,7 @@ db.createCollection("registro_entrega", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
+      additionalProperties : false,
       title: "registro_entrega object validation",
       required: ["fecha_entrega", "combustible_entrado", "kilometraje_entregado", "id_alquiler", "id_empleado"],
       properties: {
