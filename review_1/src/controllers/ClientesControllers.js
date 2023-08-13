@@ -64,7 +64,6 @@ const GetClienteRservasId =  async (req, res) => {
 
 const GetAllClientsAlquiler =  async (req, res) => {
     try {
-        console.log('holsa');
         
         const result = await GetClientesAlquiler();
 
@@ -81,7 +80,6 @@ const GetAllClientsAlquiler =  async (req, res) => {
 
 const GetAllInfoReserva =  async (req, res) => {
     try {
-        console.log('holsa');
         
         const result = await GetDataClienteReserva();
 
