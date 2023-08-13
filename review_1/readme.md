@@ -82,45 +82,200 @@ crea la base de datos con el archivo db.mongodb.js en la ruta db/db.mongodb.js
 
 #### NOTA: NO OLVIDES CAMBIAR LAS VARIABLES DE ENTORNO A TUS NECESIDADES
 
-### Clients getall
+
+# API Reference
+
+**NOTA** : `RECUERDA USAR EN EL HEADER DE LA PETICION EL PARAMETRO Authorization CON LA API_KEY O TOKEN PARA LOS ENDPOINTS QUE SEA OBLIGATORIO`
+
+### Authentication
+
+Para tener acceso a los endpoints primero tenemos que generar un token de acuerdo al enpoint que queremos usar, si queremos usar un endpoint de alquiler entoncres tenemos que crear el token para ese enpoint que posteriormente usarameos en el parametro Authorization del header
 
 ```http
-POST /api/clients
+GET /api/auth/:colleccion
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `:colleccion` | `string` | **Required**. El nombre de la collecion por ejemplo Alquiere o Automovil |
+
+
+
+### Clients
+
+```http
+GET /api/clients
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Opcional**. |
+| `api_key` | `string` | **Required**. |
 
-Respuesta
 
-```json
-[
-  {
-    "_id": "64ca40b12a41a46b22d3ab9c",
-    "nombre": "Nubia",
-    "apellido": "casanova",
-    "dni": 3754892,
-    "direccion": "el carmen",
-    "telefono": 310648975,
-    "email": "nubiacasanova@gmail.com"
-  },
-  {
-    "_id": "64ca40b12a41a46b22d3ab9d",
-    "nombre": "Marta",
-    "apellido": "Martinez",
-    "dni": 5788518885,
-    "direccion": "giron casa",
-    "telefono": 34875698956,
-    "email": "martatazzz77@gmail.com"
-  },
-  {
-    "_id": "64ca40b12a41a46b22d3ab9e",
-    "nombre": "Luz",
-    "apellido": "Federiza",
-    "dni": 877487547,
-    "direccion": "giron cas3",
-    "telefono": 578758857,
-    "email": "Ferrluz23@gmail.com"
-  }
-]
+```http
+GET /api/clients/reserva/info
 ```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/clients/reservas/pendientes
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+
+```http
+GET /api/clients/reservas/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/clients/alquiler
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/clients/:dni
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+
+
+### Automovil
+
+```http
+GET /api/auto/disponible
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/auto/sursales
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/auto/sursales/capacidad
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+
+```http
+GET /api/auto/sursales/capacidad/disponible
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/auto/capacidad/5
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET /api/auto/marca
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+### Alquiler
+
+```http
+GET api/alquiler/cantidad
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET api/alquiler/activo
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET api/alquiler/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+
+```http
+GET api/alquiler/pay/:id
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET api/alquiler/fecha_inicio/:date
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET api/alquiler/fecha_inicio/:inicio/fecha_final/:final
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+### Empleado
+
+```http
+GET api/empleado/vendedores
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+
+```http
+GET api/empleado/gerente/asistente
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. |
+
+## 🛠 Tecnologias
+Node, Express, Mongodb
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://dannkol.github.io/portafolios/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/daniel-manosalva-000b98242)
+
