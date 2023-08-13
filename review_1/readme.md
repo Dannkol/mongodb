@@ -255,14 +255,14 @@ GET api/alquiler/fecha_inicio/:inicio/fecha_final/:final
 | `api_key` | `string` | **Required**. |
 
 
-### Empleado
+### Empleados
 
 ```http
 GET api/empleado/vendedores
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. |
+| `/` | `/` | **/**. |
 
 
 ```http
@@ -270,7 +270,7 @@ GET api/empleado/gerente/asistente
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. |
+| `/` | `/` | **/**. |
 
 ## 🛠 Tecnologias
 Node, Express, Mongodb
