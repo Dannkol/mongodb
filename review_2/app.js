@@ -4,10 +4,8 @@ import dotenv from "dotenv";
 //Modulos propios
 import configureApp from "./src/config/express.js";
 
-import { Bodegas } from "./src/models/Bodegas.js";
-
 //Routers
-
+import { router as Bodegas_Router } from "./src/routes/Bodegas_Router.js";
 
 dotenv.config();
 
@@ -18,9 +16,12 @@ configureApp(app);
 
 // Definir rutas
 
-app.use('/', async (req, res, next) => {
-    const result = await Bodegas.getAll();
-    res.status(200).json(result)
+app.use('/api', Bodegas_Router)
+
+app.post('/create', async (req, res, next) => {
+  console.log('create');
+  const result = await Bodegas.createBodega("Daniel", "1" , "2");
+  res.status(200).json(result)
 })
 
 // Variables de entorno
