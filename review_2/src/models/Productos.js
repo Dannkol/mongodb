@@ -15,7 +15,6 @@ export class Producto {
     }
   
     static async getById(id){
-        console.log(id);
       await this.initialize("Bodegas", "productos");
       try {
           const productos = await this.collection.findOne({ id: id });

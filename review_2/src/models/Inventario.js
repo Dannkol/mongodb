@@ -16,38 +16,47 @@ export class Inventario {
     }
   }
 
-  static async CreateInventario(id_producto, id_bodega, cantidad) {
-    await this.initialize("Bodegas", "inventarios");
+  static async Queryinventario(id_producto, id_bodega, cantidad, cantidad_actual) {
+    await this.initialize("Bodegas", "inventarios")
     try {
-      if (await Bodegas.getById(id_bodega)) {
-        if (await Producto.getById(id_producto)) {
-          const id = new ObjectId();
 
-          const inventarioData = {
-            _id: id,
-            id: id.toString(),
+      const query = {
+        $and: [
+          {
             id_producto: id_producto,
+          },
+          {
             id_bodega: id_bodega,
-            cantidad: cantidad,
-          };
-
-          const result_create = await this.collection.insertOne(inventarioData);
-
-          return result_create.insertedCount;
-        } else {
-          return {
-            message: "Error Producto no existe",
-          };
-        }
-      } else {
-        return {
-          message: "Error Bodega no existe",
-        };
+          }
+        ]
       }
+
+      console.log(cantidad_actual + cantidad);
+
+      const update = {
+        $set: {
+          cantidad: cantidad_actual + cantidad,
+          id_producto: id_producto,
+          id_bodega: id_bodega
+        },
+      };
+
+      const options = { upsert: true };
+
+      const result = await this.collection.updateOne(query, update, options, (err, res) => {
+        if (err) throw err;
+      });
+
+      console.log(result);
+
+      return !result.upsertedId ? {
+        message: "Inventario actualizado"
+      } : {
+        message: "Inventario creado"
+      };
+
     } catch (error) {
       console.error(error);
-    } finally {
-      this.clints.close();
     }
   }
 
@@ -65,9 +74,10 @@ export class Inventario {
         ],
       });
 
-      result = result
-        ? console.log("resul", result)
-        : await this.CreateInventario(id_producto, id_bodega, cantidad);
+      const cantidad_actual = result ? result.cantidad : 0;
+
+      result = await this.Queryinventario(id_producto, id_bodega, cantidad, cantidad_actual);
+
       return result;
     } catch (error) {
       console.error(error);
