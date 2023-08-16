@@ -24,6 +24,18 @@ export class Bodegas {
     }
   }
 
+  static async getById(id){
+    await this.initialize("Bodegas", "bodegas");
+    try {
+        const Bodegas = await this.collection.findOne({ id: id });
+        return Bodegas;
+    } catch (error) {
+        console.error(error);
+    }finally{
+        this.clints.close();
+    }
+  }
+
   static async createBodega(nombre, id_responsable, estado) {
     await this.initialize("Bodegas", "bodegas");
     try {

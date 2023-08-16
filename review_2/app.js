@@ -6,6 +6,7 @@ import configureApp from "./src/config/express.js";
 
 //Routers
 import { router as Bodegas_Router } from "./src/routes/Bodegas_Router.js";
+import { router as Inventarios_Router } from "./src/routes/Inventarios_Router.js";
 
 dotenv.config();
 
@@ -16,7 +17,11 @@ configureApp(app);
 
 // Definir rutas
 
-app.use('/api', Bodegas_Router)
+app.use('/api/bodegas', Bodegas_Router);
+app.use('/api/inventario', Inventarios_Router);
+
+
+
 
 app.post('/create', async (req, res, next) => {
   console.log('create');
