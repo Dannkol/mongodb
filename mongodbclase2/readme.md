@@ -46,4 +46,67 @@ mongodb permite realizar multitud de consultas anteriormente usamos `findOne`, e
 
 20. Listar los alquileres con fecha de inicio entre '2023-07-05' y '2023-07-10'.
 
+# Glosario
 
+1. ``find()``: Realiza una consulta para buscar documentos en una colección según los criterios especificados.
+
+```js
+db.collection("nombreColeccion").find({ campo: valor });
+```
+
+2. ``findOne()``: Devuelve un solo documento que cumpla con los criterios de búsqueda.
+
+```js
+db.collection("nombreColeccion").findOne({ campo: valor });
+```
+
+3. ``countDocuments()``: Cuenta la cantidad de documentos que coinciden con los criterios de búsqueda
+
+```js
+db.collection("nombreColeccion").countDocuments({ campo: valor });
+```
+
+4. ``aggregate()``: Realiza operaciones de agregación en documentos, como agrupar, filtrar y proyectar.
+
+```js
+db.collection("nombreColeccion").aggregate([{ operacion1 }, { operacion2 }]);
+```
+
+5. ``distinct()``: Obtiene valores únicos para un campo específico en la colección.
+
+```js
+db.collection("nombreColeccion").distinct("campo");
+```
+
+6. ``sort()``: Ordena los resultados según un campo específico y el orden (ascendente o descendente).
+
+```js
+db.collection("nombreColeccion").find({}).sort({ campo: 1 }); // Ascendente
+db.collection("nombreColeccion").find({}).sort({ campo: -1 }); // Descendente
+```
+
+7. ``limit()``: Limita la cantidad de documentos devueltos por la consulta.
+
+```js
+db.collection("nombreColeccion").find({}).limit(10);
+```
+
+8. ``skip()``: Omite una cantidad específica de documentos en la consulta.
+
+```js
+db.collection("nombreColeccion").find({}).skip(10);
+```
+
+9. ``updateOne()`` /`` updateMany()``: Actualiza uno o varios documentos que coinciden con los criterios de búsqueda.
+
+```js
+db.collection("nombreColeccion").updateOne({ campo: valor }, { $set: { nuevoCampo: nuevoValor } });
+db.collection("nombreColeccion").updateMany({ campo: valor }, { $set: { nuevoCampo: nuevoValor } });
+```
+
+10. ``deleteOne()`` / ``deleteMany()``: Elimina uno o varios documentos que coinciden con los criterios de búsqueda.
+
+```js
+db.collection("nombreColeccion").deleteOne({ campo: valor });
+db.collection("nombreColeccion").deleteMany({ campo: valor });
+```
