@@ -53,9 +53,6 @@ export class Bodegas {
 
       const bodega = await this.collection.findOne({ _id: bodegaId });
 
-      console.log(result);
-      console.log(bodega);
-
       return bodega;
     } catch (error) {
       console.error(error);

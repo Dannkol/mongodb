@@ -11,8 +11,6 @@ export class ControllerProducto extends Producto{
             const validaciones = plainToClass(ProductosPost, req.body, {
                 excludeExtraneousValues: true,
               });
-            
-              console.log(validaciones);
 
               for (let key in validaciones) {
                 if (validaciones[key] == false) {

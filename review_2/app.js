@@ -30,7 +30,6 @@ app.use('/api/translado', Translado_Router);
 
 
 app.post('/create', async (req, res, next) => {
-  console.log('create');
   const result = await Bodegas.createBodega("Daniel", "1" , "2");
   res.status(200).json(result)
 })

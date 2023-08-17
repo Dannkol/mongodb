@@ -12,8 +12,6 @@ const authorization = async (req, res) => {
 
     const user = await User.getUser(nombre, password);
 
-    console.log(user);
-
     const auth = user.nombre === nombre && user.password == password;
     if (!auth) {
       return res.status(401).json({ error: "Credenciales inválidas" });

@@ -30,9 +30,7 @@ export class Inventario {
           }
         ]
       }
-
-      console.log(cantidad_actual + cantidad);
-
+      
       const update = {
         $set: {
           cantidad: cantidad_actual + cantidad,
@@ -46,8 +44,6 @@ export class Inventario {
       const result = await this.collection.updateOne(query, update, options, (err, res) => {
         if (err) throw err;
       });
-
-      console.log(result);
 
       return !result.upsertedId ? {
         message: "Inventario actualizado"

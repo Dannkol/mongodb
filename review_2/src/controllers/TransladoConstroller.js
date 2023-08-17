@@ -9,8 +9,6 @@ export class ControllerTranslado extends Translado {
         const validaciones = plainToClass(TrasladoPost, req.body, {
             excludeExtraneousValues: true,
           });
-        
-          console.log(validaciones);
 
           for (let key in validaciones) {
             if (validaciones[key] == false) {
