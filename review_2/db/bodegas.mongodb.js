@@ -1,5 +1,7 @@
 use("Bodegas")
 
+db.historiales.findOne({_id: ObjectId('64dd5bfc808c95ee02195732')},{})
+
 db.inventarios.aggregate([{
   "$lookup": {
     "from": "bodegas",
