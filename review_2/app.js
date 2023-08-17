@@ -10,6 +10,7 @@ import { router as Inventarios_Router } from "./src/routes/Inventarios_Router.js
 import { router as Productos_Routes } from "./src/routes/Productos_Routes.js";
 import { routes as Translado_Router } from "./src/routes/Translado_Router.js";
 
+
 dotenv.config();
 
 const app = express();
