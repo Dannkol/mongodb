@@ -33,7 +33,11 @@ En este momento vamos a crear una coleccion nueva e insertar los datos de la tab
 
 ## Pasos con las mongodb command line tools
 
-Estas son comandos que podemos usar por consola para interactuar con la base de datos, en este caso usaremos el comando mongodump, utilizado para exportar facilmetno los BSON de la base de datos, muy usado para crear copias de seguridad de nuesta base de datos
+Estaos son comandos que podemos usar por consola para interactuar con la base de datos, en este caso usaremos el comando mongodump, muy usado para crear copias de seguridad de nuesta base de datos.
+
+Para continuar es necesario instalar las [mongodb command line](https://www.mongodb.com/try/download/database-tools), solo selecciona la plataforma que usas y descarga el instalador de la herramienta
+
+`NOTA: Normalmente en windows toca agregar manualmente una varibale de entorno para usarlo en cualquir sitio desde consola`
 
 ```bash
 mongodump --uri "mongodb://usuario:contraseña@localhost:27017/nombre_basededatos" -o ruta/del/destino
