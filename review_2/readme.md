@@ -52,42 +52,19 @@ Devuelve el api key
 #### Get  devuelve los productos en forma descendente agrupados por bodegas ejemplo
 
 ```http
-  GET /bodegas
+  GET /api/bodegas/inventory
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `api_key` | `string` | **Required**. API key   | 
 
-#### Respuesta
-
-```json
-
-[
-  {
-    "bodega": "prueba",
-    "total": "89700",
-    "producto": 27
-  },
-  {
-    "bodega": "bodega2",
-    "total": "87000",
-    "producto": 28
-  },
-  {
-    "bodega": "bodega7",
-    "total": "55281",
-    "producto": 27
-  }
-]
-
-```
 
 
 #### Post para crear una nueva bodega
 
 ```http
-  POST /bodegas
+  POST /api/bodegas/create
 ```
 
 | Parameter | Type     | Description                       |
@@ -97,26 +74,11 @@ Devuelve el api key
 | `nombre` | `string` | **Required** |
 | `estado` | `numbre` | **Required** |
 
-#### Devuelve
-
-```json
-{
-  "id": 54,
-  "nombre": "daniel",
-  "id_responsable": 16,
-  "estado": 2,
-  "created_by": null,
-  "updated_by": null,
-  "created_at": "2023-07-06T04:41:23.000Z",
-  "updated_at": null,
-  "deleted_at": null
-}
-```
 
 #### POST para crear un producto
 
 ```http
-  POST /productos
+  POST /api/producto/create
 ```
 
 | Parameter | Type     | Description                       |
@@ -128,42 +90,10 @@ Devuelve el api key
 | `cantidad` | `numbre` | **Required** |
 
 
-#### Devuelve
-
-```json
-{
-  "mensaje": "Producto creado",
-  "producto": {
-    "producto": {
-      "id": 63,
-      "nombre": "arroz",
-      "descripcion": "Arroz Blanco",
-      "estado": 1,
-      "created_by": null,
-      "updated_by": null,
-      "created_at": null,
-      "updated_at": null,
-      "deleted_at": null
-    },
-    "inventario": {
-      "id": 80,
-      "id_bodega": 11,
-      "id_producto": 63,
-      "cantidad": 10,
-      "created_by": null,
-      "updated_by": null,
-      "created_at": "2023-07-06T06:17:17.000Z",
-      "updated_at": null,
-      "deleted_at": null
-    }
-  }
-}
-```
-
-#### POST para crear nuevo inventario
+#### POST para crear nuevo inventario o actualiza existentes
 
 ```http
-  POST /inventario
+  POST /api/inventario/create
 ```
 
 | Parameter | Type     | Description                       |
@@ -173,53 +103,10 @@ Devuelve el api key
 | `id_bodega` | `numbre` | **Required** |
 | `cantidad` | `numbre` | **Required** |
 
-
-#### Devuelve si el inventario existe actualiza la cantidad y devuelve
-
-```json
-{
-    "mensaje": "actualizacion de inventario",
-    "inventario": [
-        {
-            "id": 82,
-            "id_bodega": 13,
-            "id_producto": 62,
-            "cantidad": 54,
-            "created_by": null,
-            "updated_by": null,
-            "created_at": "2023-07-06T07:19:58.000Z",
-            "updated_at": null,
-            "deleted_at": null
-        }
-    ]
-}
-```
-#### Devuelve Si el inventario no existe crea uno nuevo y devuelve
-
-```json
-{
-    "mensaje": "crear nuevo inventario",
-    "inventario": [
-        {
-            "id": 83,
-            "id_bodega": 12,
-            "id_producto": 62,
-            "cantidad": 2,
-            "created_by": null,
-            "updated_by": null,
-            "created_at": "2023-07-06T07:26:01.000Z",
-            "updated_at": null,
-            "deleted_at": null
-        }
-    ]
-}
-```
-
-
 #### POST para realizar el traslado de productos entre bodejas
 
 ```http
-  POST /traslado
+  POST /api/translado
 ```
 
 | Parameter | Type     | Description                       |
@@ -227,46 +114,11 @@ Devuelve el api key
 | `api_key`      | `string` | **Required**. API key |
 | `cantidad` | `numbre`| **Required**|
 | `producto` | `numbre` | **Required** |
-| `bodega_send` | `numbre` | **Required** |
-| `bodega_to` | `numbre` | **Required** |
-
-
-#### Devuelve
-
-```json
-
-{
-    "menssage": "Traslado exitoso" /* Mensaje de exito */
-    "data": {
-        "bodega_origen": 19,  /* bodega de origen */
-        "bodega_destino": 12, /* bodega de destino */
-        "cantidad": 23,  /* cantidad trasladad de una bodega a otra */
-        "historial": [  /* tabla historial */
-            {
-                "id": 35,
-                "cantidad": 23, 
-                "id_bodega_origen": 19,
-                "id_bodega_destino": 12,
-                "id_inventario": 12, /* id del inventario relacionada con el historial */
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2023-07-06T08:42:45.000Z",
-                "updated_at": null,
-                "deleted_at": null
-            }
-        ]
-    }
-}
-
-```
-
-
-
-
-
+| `idBodegaOrigen` | `numbre` | **Required** |
+| `idBodegaDestino` | `numbre` | **Required** |
 
 ## 🛠 Tecnologias
-Javascript, Nodejs, Typesvript, Mysql
+Javascript, Nodejs, Typesvript, Mongodb
 
 
 ## 🔗 Links
