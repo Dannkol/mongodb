@@ -110,3 +110,39 @@ db.collection("nombreColeccion").updateMany({ campo: valor }, { $set: { nuevoCam
 db.collection("nombreColeccion").deleteOne({ campo: valor });
 db.collection("nombreColeccion").deleteMany({ campo: valor });
 ```
+
+
+# $lookup
+
+``$lookup`` es un operador de agregación en MongoDB que se utiliza para realizar una "unión" entre dos colecciones diferentes. En otras palabras, te permite combinar documentos de una colección con documentos de otra colección en función de un campo común, creando así una especie de relación entre las colecciones.
+
+## Syntax
+
+```js
+  {
+    $lookup:
+      {
+        from: <collection to join>, 
+        localField: <field from the input documents>, 
+        foreignField: <field from the documents of the "from" collection>, 
+        as: <output array field> 
+      }
+  }
+```
+
+* Parametros
+
+  * pipeline :  permite realizar operaciones más avanzadas y flexibles al combinar documentos de colecciones diferentes.
+
+  * from : Nombre de la colección a unir
+
+  * localField : Nombre de la colección a unir
+
+  * foreignField : Campo en la colección comentarios para la unión
+
+  * as : Nombre del nuevo campo con los comentarios combinados
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://dannkol.github.io/portafolios/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/daniel-manosalva-000b98242)
