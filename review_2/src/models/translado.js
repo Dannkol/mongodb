@@ -11,7 +11,7 @@ export class Translado {
    * {
    *      "cantidad"  : 2,
    *      "producto" : 12,
-   *      "idBodegaOrigen" : 11
+   *      "idBodegaOrigen" : 11,
    *      "idBodegaDestino" : 12
    *
    * }
@@ -36,13 +36,8 @@ export class Translado {
         { session, returnOriginal: false }
       );
 
-      console.log(inventarioOrigen.value.cantidad >= object.cantidad);
-      console.log(inventarioOrigen.value.cantidad , object.cantidad);
-
-    
-      if(!(inventarioOrigen.value.cantidad >= object.cantidad)) throw { error: "cantidad insuficiente" }
-        
       if (inventarioOrigen.value) {
+        if(!(inventarioOrigen.value.cantidad >= object.cantidad)) throw { error: "cantidad insuficiente" }
         const inventarioDestino = await inventario.findOne({
           id_producto: object.idProducto,
           id_bodega: object.idBodegaDestino,
