@@ -1,9 +1,64 @@
+# Migracion de SQL a mongodb
+
+Aunque mongodb se diga que no es relacional, la verdad es que la misma se puede usar como relacional como ya lo hicimos previamente, pero en este caso migraremos toda una base de datos de mysql a mongodb, para esto usaremos phpmyadmin, mongodb compass y [mongodb command line tools](https://www.mongodb.com/docs/database-tools/)
+
+## Pasos a seguir en phpmyadmin
+
+Una vez tengamos phpmyadmin y la base de datos que queremos migrara.
+
+1. Seleciona la tabla
+2. Da click en exportar
+3. Exporta como csv
+
+![texto_alternativo](./doc/img/expor_csv.png)
+
+
+con los archivos csv o json vamos a compass o atlas
+
+## Pasos en atlas o compas 
+
+En este momento vamos a crear una coleccion nueva e insertar los datos de la tabla que exportamos a csv o json
+
+1. Crea una nueva base de datos o selecciona una exsistente
+2. Crea una nueva colleccion o selecciona una existente
+4. Insertar los datos desde el csv o json
+
+![Crear Base de datos](./doc/img/Compass_Crear_base.png)
+
+![Insertar datos](./doc/img/Insertar_data_compass.png)
+
+![Insertar datos opciones](./doc/img/Opciones_de_Insercion.png)
+
+`NOTA : Cuando insertas un csv puedes especificar el tipo de dato en el campo como se muestra en la ultima imagen`
+
+## Pasos con las mongodb command line tools
+
+Estas son comandos que podemos usar por consola para interactuar con la base de datos, en este caso usaremos el comando mongodump, utilizado para exportar facilmetno los BSON de la base de datos, muy usado para crear copias de seguridad de nuesta base de datos
+
+```bash
+mongodump --uri "mongodb://usuario:contraseña@localhost:27017/nombre_basededatos" -o ruta/del/destino
+```
+
+* usuario: Tu nombre de usuario de MongoDB.
+* contraseña: Tu contraseña de MongoDB.
+* localhost: La dirección del servidor MongoDB (puede ser una dirección IP o un nombre de host).
+* 27017: El puerto de MongoDB (por defecto es 27017).
+* nombre_basededatos: El nombre de la base de datos que deseas respaldar.
+* /ruta/del/destino: La ubicación en la que deseas guardar los archivos de respaldo. Asegúrate de que esta ruta exista y sea accesible.
+
+`NOTA: Para atlas solo usa la url de coneccion para el parametro --uri`
+
+Después de ejecutar el comando, se creará una carpeta en la ubicación especificada con los archivos de respaldo de la base de datos. Estos archivos pueden ser utilizados posteriormente con el comando mongorestore para restaurar la base de datos.
+
+En este caso puedes ver los binarios de la base de datos en la carpeta `db\dump\Bodegas`
+
+## Conclusion
+
+Si seguiste los pasos en a este punto ya tienes una base de datos sql en mongodb, habras realizado la migracion y creacion de una copia de seguridad que podras utilizar para crear la base de datos en un futuro
 
 # Sistema gestor de bodegas
 
 Activadad de campuslands
-
-
 
 
 ## Base de datos
