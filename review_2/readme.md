@@ -89,6 +89,20 @@ Compilar los ts
    npx tsc -w
 ```
 
+## Creacion de la base de datos
+
+Como realizamos una copia de seguiridad con mongodb command line tools, tenemos que desplegar esta copia de seguridad para eso ejecutamos el siguiente comando
+
+```bash
+mongorestore --uri "mongodb+srv://usuario:contraseña@cluster.mongodb.net/nombre_basededatos" --drop /ruta/del/respaldo
+```
+* usuario: Tu nombre de usuario de MongoDB Atlas.
+* contraseña: Tu contraseña de MongoDB Atlas.
+* cluster.mongodb.net: La URL de conexión de tu clúster en MongoDB Atlas.
+* nombre_basededatos: El nombre de la base de datos en MongoDB Atlas donde deseas restaurar los datos.
+* /ruta/del/respaldo: La ruta al directorio que contiene los archivos de respaldo descomprimidos.
+
+
 ## API Reference
 
 #### post authentication
